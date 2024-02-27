@@ -1,7 +1,7 @@
 package com.mindex.challenge.service.impl;
 
 import com.mindex.challenge.data.Employee;
-import com.mindex.challenge.data.ReportingStructure;
+import com.mindex.challenge.data.ReportingStructureDto;
 import com.mindex.challenge.service.EmployeeService;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,10 +34,10 @@ public class ReportingStructureServiceImplUnitTest {
         String employeeId = top.getEmployeeId();
 
         when(employeeService.read(employeeId)).thenReturn(top);
-        ReportingStructure reportingStructure = reportingStructureService.getReportingStructure(employeeId);
+        ReportingStructureDto reportingStructureDto = reportingStructureService.getReportingStructure(employeeId);
 
-        assertNotNull(reportingStructure);
-        assertEquals(top.getDirectReports().size(), reportingStructure.getNumberOfReports());
+        assertNotNull(reportingStructureDto);
+        assertEquals(top.getDirectReports().size(), reportingStructureDto.getNumberOfReports());
     }
 
     private Employee buildEmployee() {

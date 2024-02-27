@@ -1,6 +1,6 @@
 package com.mindex.challenge.service.impl;
 
-import com.mindex.challenge.data.ReportingStructure;
+import com.mindex.challenge.data.ReportingStructureDto;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,22 +37,22 @@ public class ReportingStructureServiceImplTest {
     @Test
     public void testCreate_success() {
         String employeeId = "16a596ae-edd3-4847-99fe-c4518e82c86f";
-        ResponseEntity<ReportingStructure> response = restTemplate.getForEntity(String.format("%s/create/%s", domain, employeeId),
-                ReportingStructure.class, new HashMap<>());
+        ResponseEntity<ReportingStructureDto> response = restTemplate.getForEntity(String.format("%s/create/%s", domain, employeeId),
+                ReportingStructureDto.class, new HashMap<>());
 
         assertNotNull(response);
         assertEquals(OK, response.getStatusCode());
-        ReportingStructure reportingStructure = response.getBody();
-        assertNotNull(reportingStructure);
-        assertEquals(employeeId, reportingStructure.getEmployee().getEmployeeId());
-        assertEquals(4, reportingStructure.getNumberOfReports());
+        ReportingStructureDto reportingStructureDto = response.getBody();
+        assertNotNull(reportingStructureDto);
+        assertEquals(employeeId, reportingStructureDto.getEmployee().getEmployeeId());
+        assertEquals(4, reportingStructureDto.getNumberOfReports());
     }
 
     @Test
     public void testCreate_notFound() {
         String employeeId = "invalid";
-        ResponseEntity<ReportingStructure> response = restTemplate.getForEntity(String.format("%s/create/%s", domain, employeeId),
-                ReportingStructure.class, new HashMap<>());
+        ResponseEntity<ReportingStructureDto> response = restTemplate.getForEntity(String.format("%s/create/%s", domain, employeeId),
+                ReportingStructureDto.class, new HashMap<>());
 
         assertNotNull(response);
         assertEquals(NOT_FOUND, response.getStatusCode());

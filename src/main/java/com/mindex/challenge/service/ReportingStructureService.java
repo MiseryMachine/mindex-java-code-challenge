@@ -1,6 +1,6 @@
 package com.mindex.challenge.service;
 
-import com.mindex.challenge.data.ReportingStructure;
+import com.mindex.challenge.data.ReportingStructureDto;
 
 /**
  * Specifies services for working with the ReportingStructure.
@@ -13,5 +13,5 @@ public interface ReportingStructureService {
      * @param employeeId The employee's id.
      * @return A ReportingStructure for the employee, or null if the employee is not found.
      */
-    ReportingStructure getReportingStructure(String employeeId);
+    ReportingStructureDto getReportingStructure(String employeeId);
 }

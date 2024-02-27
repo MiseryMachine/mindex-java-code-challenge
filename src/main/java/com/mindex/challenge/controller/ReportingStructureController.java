@@ -1,6 +1,6 @@
 package com.mindex.challenge.controller;
 
-import com.mindex.challenge.data.ReportingStructure;
+import com.mindex.challenge.data.ReportingStructureDto;
 import com.mindex.challenge.service.ReportingStructureService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,11 +42,11 @@ public class ReportingStructureController {
      * @throws ResponseStatusException For any errors during the execution of this endpoint.
      */
     @GetMapping(value = "/create/{employeeId}", produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity<ReportingStructure> createReportingStructure(@PathVariable("employeeId") String employeeId) throws ResponseStatusException {
+    public ResponseEntity<ReportingStructureDto> createReportingStructure(@PathVariable("employeeId") String employeeId) throws ResponseStatusException {
         try {
-            ReportingStructure reportingStructure = reportingStructureService.getReportingStructure(employeeId);
+            ReportingStructureDto reportingStructureDto = reportingStructureService.getReportingStructure(employeeId);
 
-            return ResponseEntity.ok(reportingStructure);
+            return ResponseEntity.ok(reportingStructureDto);
         }
         catch (ResponseStatusException e) {
             logger.error(e.getMessage(), e);

@@ -10,11 +10,20 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.Optional;
 
+/**
+ * Spring Boot service for working with the Compensation bean.
+ */
 @Service("compensationService")
 public class CompensationServiceImpl implements CompensationService  {
     private final CompensationRepository compensationRepository;
     private final EmployeeService employeeService;
 
+    /**
+     * Creates a new service instance and autowires Spring Beans.
+     *
+     * @param compensationRepository The persistence repository for accessing compensation data.
+     * @param employeeService        The service for accessing employee data.
+     */
     public CompensationServiceImpl(CompensationRepository compensationRepository, EmployeeService employeeService) {
         this.compensationRepository = compensationRepository;
         this.employeeService = employeeService;

@@ -1,7 +1,7 @@
 package com.mindex.challenge.service.impl;
 
 import com.mindex.challenge.data.Employee;
-import com.mindex.challenge.data.ReportingStructure;
+import com.mindex.challenge.data.ReportingStructureDto;
 import com.mindex.challenge.service.EmployeeService;
 import com.mindex.challenge.service.ReportingStructureService;
 import org.springframework.stereotype.Service;
@@ -26,11 +26,11 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
     }
 
     @Override
-    public ReportingStructure getReportingStructure(String employeeId) {
+    public ReportingStructureDto getReportingStructure(String employeeId) {
         Employee employee = employeeService.read(employeeId);
         int numberOfReports = countNumberOfReports(employee);
 
-        return new ReportingStructure(employee, numberOfReports);
+        return new ReportingStructureDto(employee, numberOfReports);
     }
 
     // Recursive method for rolling up direct report count.

@@ -3,7 +3,7 @@ package com.mindex.challenge.data;
 /**
  * A data transfer object for rolling up number of reports for each employee
  */
-public class ReportingStructure {
+public class ReportingStructureDto {
     private final Employee employee;
     private final int numberOfReports;
 
@@ -13,7 +13,7 @@ public class ReportingStructure {
      * @param employee        The employee.
      * @param numberOfReports The employee's total number of reports.
      */
-    public ReportingStructure(Employee employee, int numberOfReports) {
+    public ReportingStructureDto(Employee employee, int numberOfReports) {
         this.employee = employee;
         this.numberOfReports = numberOfReports;
     }

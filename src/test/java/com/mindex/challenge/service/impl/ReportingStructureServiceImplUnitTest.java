@@ -12,7 +12,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -37,15 +38,6 @@ public class ReportingStructureServiceImplUnitTest {
 
         assertNotNull(reportingStructure);
         assertEquals(top.getDirectReports().size(), reportingStructure.getNumberOfReports());
-    }
-
-    @Test
-    public void testCreate_notFound() {
-        String employeeId = "invalid";
-        when(employeeService.read(employeeId)).thenReturn(null);
-        ReportingStructure reportingStructure = reportingStructureService.getReportingStructure(employeeId);
-
-        assertNull(reportingStructure);
     }
 
     private Employee buildEmployee() {

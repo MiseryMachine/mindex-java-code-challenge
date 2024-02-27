@@ -4,8 +4,6 @@ import com.mindex.challenge.data.Employee;
 import com.mindex.challenge.data.ReportingStructure;
 import com.mindex.challenge.service.EmployeeService;
 import com.mindex.challenge.service.ReportingStructureService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,8 +14,6 @@ import java.util.stream.Collectors;
  */
 @Service("reportingStructureService")
 public class ReportingStructureServiceImpl implements ReportingStructureService {
-    private final Logger logger = LoggerFactory.getLogger(ReportingStructureServiceImpl.class);
-
     private final EmployeeService employeeService;
 
     /**
@@ -31,19 +27,7 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
 
     @Override
     public ReportingStructure getReportingStructure(String employeeId) {
-        Employee employee;
-
-        try {
-            employee = employeeService.read(employeeId);
-        } catch (Exception e) {
-            logger.error("Error looking up employee", e);
-            return null;
-        }
-
-        if (employee == null) {
-            return null;
-        }
-
+        Employee employee = employeeService.read(employeeId);
         int numberOfReports = countNumberOfReports(employee);
 
         return new ReportingStructure(employee, numberOfReports);
